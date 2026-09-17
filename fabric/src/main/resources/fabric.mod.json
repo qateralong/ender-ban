@@ -10,10 +10,11 @@
   "entrypoints": {
     "main": ["com.ufhs.enderban.fabric.EnderBanFabric"]
   },
+  "mixins": ["enderban.mixins.json"],
   "depends": {
     "fabricloader": ">=0.19.5",
-    "minecraft": "~26.3",
-    "java": ">=25",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
     "fabric-api": "*"
   }
 }
