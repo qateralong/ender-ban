@@ -1,0 +1,5 @@
+# EnderBan messages - English
+forbidden: "&cYou cannot put this item in the Ender Chest."
+returned-dropped: "&eYour inventory is full - the item was dropped on the ground."
+no-permission: "&cYou don't have permission to use this command."
+reload-success: "&aEnderBan configuration and language reloaded."

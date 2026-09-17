@@ -1,0 +1,5 @@
+# EnderBan messages - Spanish
+forbidden: "&cNo puedes colocar este objeto en el cofre de Ender."
+returned-dropped: "&eTu inventario esta lleno - el objeto se solto en el suelo."
+no-permission: "&cNo tienes permiso para usar este comando."
+reload-success: "&aConfiguracion e idioma de EnderBan recargados."

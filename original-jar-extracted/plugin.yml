@@ -1,0 +1,21 @@
+name: EnderBan
+main: com.ufhs.enderban.EnderBanPlugin
+version: 2.0
+# api-version 1.20 is the lowest version whose Bukkit API this jar needs.
+# Because the plugin only calls stable Bukkit API (no NMS, no Paper-only
+# methods), the same jar loads fine on every server from 1.20 through the
+# newest 1.21.x release, on Spigot, Paper, Purpur and Folia alike.
+api-version: "1.20"
+description: Plugin for disabling items in the Ender Chest
+author: ufhs
+folia-supported: true
+commands:
+  ebreload:
+    description: Reload EnderBan configuration and language files
+    usage: /ebreload
+    permission: enderban.reload
+    permission-message: "You don't have permission to use this command."
+permissions:
+  enderban.reload:
+    description: Allows reloading the EnderBan configuration
+    default: op
