@@ -15,4 +15,5 @@ Minecraft 26.1 - 26.3, on Spigot, Paper, Purpur and Folia.
 ## Layout
 
 - `src/` - the Paper plugin (Maven)
-- `fabric/`, `forge/` - early, unfinished scaffolding for a Fabric/Forge port
+
+Fabric and Forge ports live on the `Fabric` and `Forge` branches.
