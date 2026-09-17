@@ -1,12 +1,6 @@
 name: EnderBan
 main: com.ufhs.enderban.EnderBanPlugin
 version: 2.0.1
-# api-version 26.1 is the lowest version whose Bukkit API this jar needs.
-# Minecraft/Paper renamed their versioning scheme starting with this
-# release (1.21.11 -> 26.1); because the plugin only calls stable Bukkit
-# API (no NMS, no Paper-only methods), the same jar loads fine on every
-# server from 26.1 through the newest 26.x release (26.3 at the time of
-# writing), on Spigot, Paper, Purpur and Folia alike.
 api-version: "26.1"
 description: Plugin for disabling items in the Ender Chest
 author: ufhs

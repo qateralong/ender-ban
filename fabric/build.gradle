@@ -15,9 +15,6 @@ repositories {
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	// Official Mojang mappings instead of Yarn: Yarn's meta hadn't published
-	// build for this release yet as of 2026-09-17, official mappings avoid
-	// that lag entirely and are what Loom recommends by default now.
 	mappings loom.officialMojangMappings()
 
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
@@ -34,9 +31,6 @@ processResources {
 
 tasks.withType(JavaCompile).configureEach {
 	it.options.encoding = "UTF-8"
-	// Paper's 26.x jars are compiled for JDK 25 (class file major version 69);
-	// vanilla/Fabric follow the same floor since Paper doesn't raise the
-	// runtime requirement on its own. Match it here.
 	it.options.release = 25
 }
 

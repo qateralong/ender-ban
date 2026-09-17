@@ -1,25 +1,4 @@
-# =====================================================================
-#  EnderBan configuration
-# =====================================================================
-
-# Language used for all in-game plugin messages.
-# Available options: en (English), ru (Russian), es (Spanish).
-# This only changes plugin messages, not any part of Minecraft itself.
-# If you enter anything other than en/ru/es, EnderBan will log a warning
-# and use "en" instead. Default: en
 lang: en
 
-# Materials that players are not allowed to place inside an Ender Chest.
-# - Use vanilla Minecraft material names, case-insensitive
-#   (e.g. diamond_sword, dragon_egg, shulker_box, air).
-# - One material per line, as shown below.
-# - Full list of valid material names:
-#   https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
-# - "air" is included by default only as a placeholder/example; you can
-#   safely remove it and add the materials you actually want to ban.
 banned-materials:
   - air
-
-# Run /ebreload (requires the enderban.reload permission) after editing
-# this file or the files in the lang/ folder to apply changes without
-# restarting the server.

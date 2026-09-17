@@ -17,7 +17,7 @@ public class LangManager {
    private static final String DEFAULT_LANG = "en";
    private final EnderBanPlugin plugin;
    private final Map<String, String> messages = new HashMap<>();
-   private String currentLang = "en";
+   private String currentLang = DEFAULT_LANG;
 
    public LangManager(EnderBanPlugin plugin) {
       this.plugin = plugin;
@@ -40,16 +40,16 @@ public class LangManager {
 
    public void reload() {
       this.messages.clear();
-      String configured = this.plugin.getConfig().getString("lang", "en");
-      String normalized = configured == null ? "en" : configured.trim().toLowerCase();
+      String configured = this.plugin.getConfig().getString("lang", DEFAULT_LANG);
+      String normalized = configured == null ? DEFAULT_LANG : configured.trim().toLowerCase();
       if (!SUPPORTED.contains(normalized)) {
-         this.plugin.getLogger().warning("config.yml: unknown lang '" + configured + "', falling back to 'en'");
-         normalized = "en";
+         this.plugin.getLogger().warning("config.yml: unknown lang '" + configured + "', falling back to '" + DEFAULT_LANG + "'");
+         normalized = DEFAULT_LANG;
       }
 
       this.currentLang = normalized;
-      this.loadInto(this.messages, "en");
-      if (!normalized.equals("en")) {
+      this.loadInto(this.messages, DEFAULT_LANG);
+      if (!normalized.equals(DEFAULT_LANG)) {
          this.loadInto(this.messages, normalized);
       }
    }
@@ -60,18 +60,13 @@ public class LangManager {
       if (file.exists()) {
          yaml = YamlConfiguration.loadConfiguration(file);
       } else {
-         try {
-            label65: {
-               try (InputStream in = this.plugin.getResource("lang/messages_" + code + ".yml")) {
-                  if (in != null) {
-                     yaml = YamlConfiguration.loadConfiguration(new InputStreamReader(in, StandardCharsets.UTF_8));
-                     break label65;
-                  }
-               }
-
+         try (InputStream in = this.plugin.getResource("lang/messages_" + code + ".yml")) {
+            if (in == null) {
                return;
             }
-         } catch (Exception var10) {
+
+            yaml = YamlConfiguration.loadConfiguration(new InputStreamReader(in, StandardCharsets.UTF_8));
+         } catch (Exception e) {
             return;
          }
       }

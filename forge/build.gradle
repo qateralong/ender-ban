@@ -15,8 +15,6 @@ base {
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 minecraft {
-	// See gradle.properties: no 26.3 mappings/build exist yet, 26.2 is the
-	// newest Forge currently supports.
 	mappings channel: "official", version: "${minecraft_version}"
 
 	runs {
