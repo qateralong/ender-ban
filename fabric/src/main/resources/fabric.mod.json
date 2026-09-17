@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "enderban",
+  "version": "${version}",
+  "name": "EnderBan",
+  "description": "Disables banned items inside Ender Chests.",
+  "authors": ["ufhs"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.ufhs.enderban.fabric.EnderBanFabric"]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.3",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}

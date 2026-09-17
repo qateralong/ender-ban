@@ -1,0 +1,38 @@
+plugins {
+	id "eclipse"
+	id "idea"
+	id "maven-publish"
+	id "net.minecraftforge.gradle" version "[6.0,6.2)"
+}
+
+version = "${mod_version}"
+group = "${mod_group_id}"
+
+base {
+	archivesName = "${mod_id}"
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+minecraft {
+	// See gradle.properties: no 26.3 mappings/build exist yet, 26.2 is the
+	// newest Forge currently supports.
+	mappings channel: "official", version: "${minecraft_version}"
+
+	runs {
+		client {
+			workingDirectory project.file("run")
+		}
+		server {
+			workingDirectory project.file("run")
+		}
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+}

@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT"
+
+[[mods]]
+modId="enderban"
+version="${file.jarVersion}"
+displayName="EnderBan"
+authors="ufhs"
+description='''Disables banned items inside Ender Chests.'''
+
+[[dependencies.enderban]]
+    modId="forge"
+    mandatory=true
+    versionRange="[65,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.enderban]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[26.2,)"
+    ordering="NONE"
+    side="BOTH"

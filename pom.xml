@@ -6,17 +6,18 @@
 
   <groupId>com.ufhs</groupId>
   <artifactId>EnderBan</artifactId>
-  <version>2.0</version>
+  <version>2.0.1</version>
   <name>EnderBan</name>
-  <description>Plugin for disabling items in the Ender Chest (1.20 - 1.21.x, all Bukkit-based cores)</description>
+  <description>Plugin for disabling items in the Ender Chest (Minecraft 26.1 - 26.3, all Bukkit-based cores)</description>
 
   <properties>
     <!--
-      1.20.1 requires Java 17 at minimum; every newer server (up to and
-      including 1.21.9) runs on Java 21, which happily executes bytecode
-      compiled for release 17. Compiling for 17 instead of 21 is what lets
-      this jar load on the oldest supported version (1.20) as well as the
-      newest.
+      Minecraft/Paper dropped the old "1.2x" numbering for the year-based
+      "26.x" scheme (1.21.11 was the last release under the old scheme;
+      26.1 is the first under the new one). Bytecode compiled for release
+      17 still loads fine on these servers even though their own jars now
+      require JDK 25 to run - the JVM stays backward compatible with older
+      class files, so there's no reason to raise this.
     -->
     <maven.compiler.release>17</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -31,16 +32,25 @@
 
   <dependencies>
     <!--
-      Deliberately pinned to the OLDEST supported Paper API (1.20.1) rather
+      Deliberately pinned to the OLDEST supported Paper API (26.1.2) rather
       than the newest. Bukkit's public API only grows across versions, so
-      code compiled against 1.20.1 keeps working unmodified on every later
-      1.20.x/1.21.x release. Pinning to the newest API instead would risk
-      calling methods that don't exist yet on older servers.
+      code compiled against 26.1.2 keeps working unmodified on every later
+      26.x release. Pinning to the newest API instead would risk calling
+      methods that don't exist yet on older servers.
+
+      Paper no longer publishes a mutable "-R0.1-SNAPSHOT" alias for the
+      26.x line - each build is an immutable, exact version now
+      (<mc version>.build.<n>-<channel>). 26.1.1 never reached the
+      "stable" channel, so 26.1.2 build 74 is the oldest stable build
+      available. 26.3 is the newest Minecraft release (confirmed via
+      Fabric's meta API as of 2026-09-17) but PaperMC hadn't cut a stable
+      build for it yet at that date (alpha/rc only) - bump this once they
+      do, the plugin needs no code changes for it either way.
     -->
     <dependency>
       <groupId>io.papermc.paper</groupId>
       <artifactId>paper-api</artifactId>
-      <version>1.20.1-R0.1-SNAPSHOT</version>
+      <version>26.1.2.build.74-stable</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>

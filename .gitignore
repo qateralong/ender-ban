@@ -1,1 +1,7 @@
 target/
+
+# Gradle (fabric/, forge/)
+.gradle/
+build/
+run/
+*.log
