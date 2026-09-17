@@ -13,7 +13,7 @@
   "mixins": ["enderban.mixins.json"],
   "depends": {
     "fabricloader": ">=0.19.5",
-    "minecraft": "~1.21.11",
+    "minecraft": "~${minecraft_version}",
     "java": ">=21",
     "fabric-api": "*"
   }
