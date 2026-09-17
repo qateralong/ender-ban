@@ -1,10 +1,10 @@
 modLoader="javafml"
-loaderVersion="[1,)"
+loaderVersion="[${forge_major},)"
 license="MIT"
 
 [[mods]]
 modId="enderban"
-version="${file.jarVersion}"
+version="\${file.jarVersion}"
 displayName="EnderBan"
 authors="ufhs"
 description='''Disables banned items inside Ender Chests.'''
@@ -12,13 +12,13 @@ description='''Disables banned items inside Ender Chests.'''
 [[dependencies.enderban]]
     modId="forge"
     mandatory=true
-    versionRange="[65,)"
+    versionRange="[${forge_major},)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.enderban]]
     modId="minecraft"
     mandatory=true
-    versionRange="[26.2,)"
+    versionRange="[${minecraft_version}]"
     ordering="NONE"
     side="BOTH"

@@ -1,0 +1,12 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "com.ufhs.enderban.forge.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"ContainerMenuMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

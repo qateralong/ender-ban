@@ -1,0 +1,5 @@
+{
+  "forbidden": "&cYou cannot put this item in the Ender Chest.",
+  "no-permission": "&cYou don't have permission to use this command.",
+  "reload-success": "&aEnderBan configuration and language reloaded."
+}

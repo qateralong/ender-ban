@@ -1,8 +1,9 @@
 plugins {
-	id "eclipse"
+	id "java"
 	id "idea"
+	id "eclipse"
 	id "maven-publish"
-	id "net.minecraftforge.gradle" version "[6.0,6.2)"
+	id "net.minecraftforge.gradle" version "[7.0.23,8.0)"
 }
 
 version = "${mod_version}"
@@ -12,25 +13,53 @@ base {
 	archivesName = "${mod_id}"
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 minecraft {
 	mappings channel: "official", version: "${minecraft_version}"
 
 	runs {
-		client {
-			workingDirectory project.file("run")
+		configureEach {
+			workingDir.convention layout.projectDirectory.dir("run")
+			args "--mixin.config=${mod_id}.mixins.json"
 		}
-		server {
-			workingDirectory project.file("run")
+		register("client")
+		register("server") {
+			args "--nogui"
 		}
 	}
 }
 
 repositories {
+	minecraft.mavenizer(it)
+	maven fg.forgeMaven
+	maven fg.minecraftLibsMaven
 	mavenCentral()
 }
 
 dependencies {
-	minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+	implementation minecraft.dependency("net.minecraftforge:forge:${minecraft_version}-${forge_version}")
+	annotationProcessor "org.spongepowered:mixin:0.8.7:processor"
+}
+
+processResources {
+	def forgeMajor = project.forge_version.split("\\.")[0]
+	inputs.property "minecraft_version", project.minecraft_version
+	inputs.property "forge_major", forgeMajor
+	filteringCharset "UTF-8"
+	filesMatching("META-INF/mods.toml") {
+		expand "minecraft_version": project.minecraft_version, "forge_major": forgeMajor
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.encoding = "UTF-8"
+}
+
+tasks.named("jar", Jar) {
+	manifest {
+		attributes([
+			"MixinConfigs": "${mod_id}.mixins.json"
+		])
+	}
 }
